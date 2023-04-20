@@ -9,6 +9,7 @@ function App() {
       <Shape size={400} />
       <Shape size={400} />
       <Shape size={400} />
+      <Shape size={400} />
     </div>
   );
 }

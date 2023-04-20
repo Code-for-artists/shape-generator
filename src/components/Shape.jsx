@@ -3,10 +3,18 @@ import { generateRandomShape } from "./utils";
 
 export const Shape = (props) => {
 
-  const shape = generateRandomShape(props.size)
+  const shapes = Array.from({ length: Math.floor(Math.random() * 3) + 1 }).map(() =>
+    generateRandomShape(props.size)
+  )
   return (
-    <svg width={props.size} height={props.size} fill="red">
-      <path d={shape.path} />
-    </svg>
+    <div className="shape-card">
+      <svg width={props.size} height={props.size} fill="red">
+        {
+          shapes.map(shape => (
+            <path key={shape.path} d={shape.path} />
+          ))
+        }
+      </svg>
+    </div>
   )
 }
