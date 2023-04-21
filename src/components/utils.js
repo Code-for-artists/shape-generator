@@ -18,7 +18,7 @@ export function generateRandomShape(size = 400, nonGeometrical = false) {
   const canvasHeight = size;
   const minShapeSize = 200;
   const minPoints = 3;
-  const maxPoints = 6;
+  const maxPoints = 5;
   const angles = [];
   const points = [];
   const numPoints = Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
