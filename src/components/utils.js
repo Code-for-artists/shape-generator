@@ -5,10 +5,11 @@ export const shapeTypes = {
   PATH: "path",
 }
 
-const geometricalShape = ({ x, y, radio, radioY }) => {
+const geometricalShape = ({ x, y, radio, radioY, canvasHeight, canvasWidth }) => {
   return [
-    { type: shapeTypes.CIRCLE, x, y, radio, radioY },
-    { type: shapeTypes.SQUARE, x, y, radio, radioY },
+    { type: shapeTypes.CIRCLE, x, y, radio: radio / 2 },
+    { type: shapeTypes.SQUARE, x: 80, y: 80, radio, radioY },
+    { type: shapeTypes.RECTANGLE, x: canvasWidth / 2, y: canvasHeight / 3, radio: radio + 20, radioY },
     { type: shapeTypes.ELIPSE, x, y, radio, radioY },
   ]
 }
@@ -22,7 +23,7 @@ export function generateRandomShape(size = 400, nonGeometrical = false) {
   const angles = [];
   const points = [];
   const numPoints = Math.floor(Math.random() * (maxPoints - minPoints + 1)) + minPoints;
-  const numAngles = Math.floor(Math.random() * (numPoints * 2)) + 1;
+  const numAngles = (numPoints * 2);
 
   const isGeometrical = Math.random() > 0.5
 
@@ -30,10 +31,12 @@ export function generateRandomShape(size = 400, nonGeometrical = false) {
     const geomtricalShapeTypes = Object.keys(shapeTypes);
     return {
       ...geometricalShape({
-        x: Math.abs(Math.floor(Math.random() * canvasWidth / 2) - 40),
-        y: Math.abs(Math.floor(Math.random() * canvasHeight / 2) - 40),
-        radio: Math.abs(Math.floor(Math.random() * canvasWidth) - minShapeSize),
-        radioY: Math.abs(Math.floor(Math.random() * canvasHeight) - minShapeSize),
+        x: canvasWidth / 2,
+        y: canvasHeight / 2,
+        radio: Math.abs(Math.floor(Math.random() * canvasWidth) - minShapeSize) + 20,
+        radioY: Math.abs(Math.floor(Math.random() * canvasHeight) - minShapeSize) + 20,
+        canvasWidth,
+        canvasHeight
       })[Math.floor(Math.random() * (geomtricalShapeTypes.length - 1))]
     }
   }
@@ -42,11 +45,17 @@ export function generateRandomShape(size = 400, nonGeometrical = false) {
     angles.push(Math.floor(Math.random() * 360));
   }
 
-  for (let i = 0; i < numPoints; i++) {
-    const lastPoint = points[i - 1] || { x: 0, y: 0 };
-    const x = Math.abs(Math.floor(Math.random() * canvasWidth - lastPoint.x / 4) - 20);
-    const y = Math.abs(Math.floor(Math.random() * canvasHeight - lastPoint.y / 4) - 20);
-    points.push({ x, y });
+  points.push({ x: 40, y: canvasHeight / 2 });
+  for (let i = 1; i < numPoints; i++) {
+    if (i > numPoints.length - 2) {
+      const x = Math.abs(Math.floor(Math.random() * canvasWidth) - points[0].x);
+      const y = Math.abs(Math.floor(Math.random() * canvasWidth) - points[0].y);
+      points.push({ x, y });
+    } else {
+      const x = Math.abs(Math.floor(Math.random() * (canvasWidth / 1.5)) + 20);
+      const y = Math.abs(Math.floor(Math.random() * (canvasHeight / 1.5)) + 50);
+      points.push({ x, y });
+    }
   }
 
   let path = `M ${points[0].x} ${points[0].y}`;
