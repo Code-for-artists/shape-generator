@@ -24,7 +24,7 @@ export const Shape = (props) => {
   const fill = COLORS[colorIndex]
   return (
     <div className="shape-card" onClick={reDrawShapes}>
-      <svg width={props.size} height={props.size} fill={fill}>
+      <svg ref={props.svgRef} width={props.size} height={props.size} fill={fill}>
         <path d={path} />
       </svg>
     </div>
