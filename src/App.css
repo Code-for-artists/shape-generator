@@ -15,14 +15,18 @@ body {
 
 .App {
   text-align: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 20px;
+  display: flex;
 }
 
 .shape-card {
-  border: 1px solid black;
   padding: 20px;
+  box-shadow: 4px 43px 145px -76px rgba(0,0,0,0.75);
+  overflow: hidden;
+  transform: scale(1);
+  transition: 0.5s;
+  @starting-style {
+    transform: scale(0);
+  }
 }
 
 .App-logo {

@@ -4,12 +4,7 @@ import { Shape } from './components/Shape';
 function App() {
   return (
     <div className="App">
-      <Shape size={400} />
-      <Shape size={400} />
-      <Shape size={400} />
-      <Shape size={400} />
-      <Shape size={400} />
-      <Shape size={400} />
+      <Shape size={600} />
     </div>
   );
 }
