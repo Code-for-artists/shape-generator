@@ -66,3 +66,14 @@ body {
     transform: rotate(360deg);
   }
 }
+.edges-button {
+  all: unset;
+  padding: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-transform: capitalize;
+  background-color: #8967B3;
+  color: #fcf0c0;
+  border: none;
+  font-weight: 700;
+}

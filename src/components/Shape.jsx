@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { randomIntFromInterval, generateRandomBlobPath, generateBlobPath } from "../utils/shapeGenerators";
+import { generateRandomBlobPath, generateBlobPath } from "../utils/shapeGenerators";
 
 const COLORS = [
   '#598392',
@@ -11,15 +11,14 @@ const COLORS = [
 ]
 export const Shape = (props) => {
   const [path, setPath] = useState('')
-  const edges = randomIntFromInterval(6, 20);
   const reDrawShapes = useCallback(() => {
-    setPath(generateRandomBlobPath(edges, props.size, props.size, 100))
-    setPath(generateBlobPath(edges, props.size, props.size))
+    setPath(generateRandomBlobPath(props.edges, props.size, props.size, 100))
+    setPath(generateBlobPath(props.edges, props.size, props.size))
   }, [setPath, props.size])
 
   useEffect(() => {
     reDrawShapes()
-  }, [reDrawShapes])
+  }, [reDrawShapes, props.edges])
 
   const colorIndex = Math.floor(Math.random() * COLORS.length)
   const fill = COLORS[colorIndex]
