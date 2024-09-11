@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { Shape } from './components/Shape';
 import { randomIntFromInterval } from "./utils/shapeGenerators";
