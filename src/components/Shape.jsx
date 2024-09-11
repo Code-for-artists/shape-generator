@@ -14,7 +14,7 @@ export const Shape = (props) => {
   const reDrawShapes = useCallback(() => {
     setPath(generateRandomBlobPath(props.edges, props.size, props.size, 100))
     setPath(generateBlobPath(props.edges, props.size, props.size))
-  }, [setPath, props.size])
+  }, [setPath, props.size, props.edges ])
 
   useEffect(() => {
     reDrawShapes()
