@@ -28,6 +28,9 @@ body {
     transform: scale(0);
   }
 }
+.shape-card svg path{
+  transition: 1s; 
+}
 
 .App-logo {
   height: 40vmin;

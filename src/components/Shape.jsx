@@ -11,8 +11,8 @@ const COLORS = [
 ]
 export const Shape = (props) => {
   const [path, setPath] = useState('')
+  const edges = randomIntFromInterval(6, 20);
   const reDrawShapes = useCallback(() => {
-    const edges = randomIntFromInterval(6, 20);
     setPath(generateRandomBlobPath(edges, props.size, props.size, 100))
     setPath(generateBlobPath(edges, props.size, props.size))
   }, [setPath, props.size])
