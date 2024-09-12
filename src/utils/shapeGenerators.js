@@ -84,3 +84,4 @@ export function generateBlobPath(edges, width, height) {
 
   return path;
 }
+

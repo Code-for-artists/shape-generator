@@ -16,11 +16,16 @@ body {
 .App {
   text-align: center;
   display: flex;
+  background-color: #fcf0c0;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .shape-card {
   padding: 20px;
   box-shadow: 4px 43px 145px -76px rgba(0,0,0,0.75);
+  background-color: aliceblue;
   overflow: hidden;
   transform: scale(1);
   transition: 0.5s;
