@@ -45,7 +45,7 @@ export function generateBlobPath(edges, width, height) {
 
   for (let i = 0; i < edges; i++) {
     const angle = i * angleStep;
-    const randomRadius = 0.4 + Math.random() * 0.8; // Random radius between 0.4 to 1.0 of the canvas size
+    const randomRadius = 0.2 + Math.random() * 0.8; // Random radius between 0.4 to 1.0 of the canvas size
     const radius = (Math.min(width, height) / 2) * randomRadius;
     let x = width / 2 + radius * Math.cos(angle);
     let y = height / 2 + radius * Math.sin(angle);
